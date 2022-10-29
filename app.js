@@ -3,31 +3,39 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const state = {
-    player1: 0,
-    player2: 0,
+    Player1: 0,
+    Player2: 0,
     currentQuestion: {}
 }
 
 let questions = []
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // MAIN DOM ELEMENT
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const $question = $("#question");
-const $a = $("#A");
-const $b = $("#B");
-const $c = $("#C");
-const $d = $("#D");
-const p1score = $("#player1 h4");
-const p2score = $("#player2 h4");
+
+const $question = $("#Questions");
+const $a = $("#a");
+const $b = $("#b");
+const $c = $("#c");
+const $d = $("#d");
+const p1score = $("#Player1 h4");
+const p2score = $("#Player2 h4");
 
 console.log(p2score, p1score);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// MAIN APP LOGIC
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const URL = "https://cdn.contentful.com/spaces/wppm258xelxu/environments/master/entries?access_token=kXoSt3WXJZUsg8-akhTlSFtc47CUOpEmtaPKs2a_saI"
 $.ajax(URL)
     .then((data) => {
-        questions = data.items.map((q) => q.fields);
-        console.log(data);
-        console.log(questions);
+        questions = data.items.map((q) => q.fields)
+        console.log(data)
+        console.log(questions)
+
+        setBoard(questions)
     })
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,17 +45,17 @@ $.ajax(URL)
 const setBoard = (q) => {
     // getting a random question
     const randomIndex = Math.floor(Math.random() * q.length)
-    cons randomQuestion = q[randomIndex]
+    const randomQuestion = q[randomIndex]
 
     // update question
-    $question.innerText = randomQuestion.question
-    $a.text() = randomQuestion.a
-    $b.text() = randomQuestion.b
-    $c.text() = randomQuestion.c
-    $d.text() = randomQuestion.a
+    $question.text = (randomQuestion.question)
+    $a.text(randomQuestion.a)
+    $b.text(randomQuestion.b)
+    $c.text(randomQuestion.c)
+    $d.text(randomQuestion.d)
 
     // update player scores
-    $p1score.text() = state.player1
-    $p2score.text() = state.player1
+    $p1score.text(state.player1)
+    $p2score.text(state.player2)
 
 }
