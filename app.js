@@ -19,10 +19,10 @@ const $a = $("#a");
 const $b = $("#b");
 const $c = $("#c");
 const $d = $("#d");
-const p1score = $("#Player1 h4");
-const p2score = $("#Player2 h4");
+const $p1score = $("#Player1 h4");
+const $p2score = $("#Player2 h4");
 
-console.log(p2score, p1score);
+console.log($p2score, $p1score);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // MAIN APP LOGIC
@@ -42,6 +42,15 @@ $.ajax(URL)
 // FUNCTIONS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const chooseAnswer = (event, question) => {
+    console.log(event)
+    if (event.target.innerText === question.answer) {
+        console.log("correct")
+    } else {
+        console.log("incorrect")
+    }
+}
+
 const setBoard = (q) => {
     // getting a random question
     const randomIndex = Math.floor(Math.random() * q.length)
@@ -58,4 +67,5 @@ const setBoard = (q) => {
     $p1score.text(state.player1)
     $p2score.text(state.player2)
 
+    $("li").on("click", chooseAnswer)
 }

@@ -46,10 +46,10 @@ ANSWERS */
 }
 
 #Answers ul li {
-    width: 40%;
-    height: 40px;
+    width: 50%;
+    height: 50px;
     background-color: black;
-    padding-top: 15px;
+    padding: 15px;
     text-align: center;
     margin: 5px;
     font-weight: bolder;
@@ -67,11 +67,16 @@ SCOREBOARD */
     margin: 10px auto;
 }
 
-#Player1,
-#Player2 {
-    width: 40%;
+#Player1 {
+    width: 50%;
     background-color: orange;
-    margin: 5px;
+    margin: 10px auto;
     text-align: center;
+}
 
+#Player2 {
+    width: 50%;
+    background-color: orange;
+    margin: 10px auto;
+    text-align: center;
 }
